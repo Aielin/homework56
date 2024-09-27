@@ -18,6 +18,15 @@ const App: React.FC = () => {
         );
     };
 
+    const removeIngredient = (name: string) => {
+        setIngredients(prevIngredients =>
+            prevIngredients.map(ingredient =>
+            ingredient.name === name && ingredient.count > 0 ?
+                {...ingredient, count:ingredient.count - 1}
+                : ingredient)
+        );
+    };
+
     return (
         <div className='App'>
             <h1>Конструктор бургера</h1>
@@ -28,7 +37,8 @@ const App: React.FC = () => {
                         <p>
                             {item.name} x {item.count}
                         </p>
-                        <button type={"button"} onClick={() => addIngredient(item.name)}>Добавить</button>
+                        <button type={'button'} onClick={() => addIngredient(item.name)}>Добавить</button>
+                        <button type={'button'} onClick={ () => removeIngredient(item.name)} disabled={item.count === 0}>Удалить</button>
                     </div>
                 ))}
             </div>
