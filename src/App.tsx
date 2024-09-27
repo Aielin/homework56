@@ -1,6 +1,7 @@
 import './App.css'
 import React, {useState} from 'react';
 import ingredientData from './TS/ingredients.ts';
+import Burger from './components/Burger.tsx'
 
 const App: React.FC = () => {
     const [ingredients, setIngredients] = useState(
@@ -25,12 +26,13 @@ const App: React.FC = () => {
                     <div key={item.name} style={{marginBottom: '10px'}}>
                         <img src={item.image} alt={item.name} style={{width: '50px', height: '50px'}}/>
                         <p>
-                            {item.name} * {item.count}
+                            {item.name} x {item.count}
                         </p>
                         <button type={"button"} onClick={() => addIngredient(item.name)}>Добавить</button>
                     </div>
                 ))}
             </div>
+            <Burger ingredients={ingredients} />
         </div>
     );
 };
