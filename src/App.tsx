@@ -21,9 +21,9 @@ const App: React.FC = () => {
     const removeIngredient = (name: string) => {
         setIngredients(prevIngredients =>
             prevIngredients.map(ingredient =>
-            ingredient.name === name && ingredient.count > 0 ?
-                {...ingredient, count:ingredient.count - 1}
-                : ingredient)
+                ingredient.name === name && ingredient.count > 0 ?
+                    {...ingredient, count:ingredient.count - 1}
+                    : ingredient)
         );
     };
 
@@ -31,7 +31,7 @@ const App: React.FC = () => {
 
     return (
         <div className='App'>
-            <h1>Конструктор бургера</h1>
+            <h1>Твой идеальный бургер</h1>
             <div className='ingredients-list'>
                 {ingredients.map(item => (
                     <div key={item.name} style={{marginBottom: '10px'}}>
@@ -40,7 +40,7 @@ const App: React.FC = () => {
                             {item.name} x {item.count}
                         </p>
                         <button type={'button'} onClick={() => addIngredient(item.name)}>Добавить</button>
-                        <button type={'button'} onClick={ () => removeIngredient(item.name)} disabled={item.count === 0}>Удалить</button>
+                        <button className='dl-btn' type={'button'} onClick={ () => removeIngredient(item.name)} disabled={item.count === 0}>Удалить</button>
                     </div>
                 ))}
             </div>
@@ -52,6 +52,5 @@ const App: React.FC = () => {
         </div>
     );
 };
-
 
 export default App
