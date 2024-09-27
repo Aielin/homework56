@@ -27,6 +27,8 @@ const App: React.FC = () => {
         );
     };
 
+    const totalPrice = ingredients.reduce((sum, ingredient) => sum + ingredient.price * ingredient.count, 30);
+
     return (
         <div className='App'>
             <h1>Конструктор бургера</h1>
@@ -43,6 +45,10 @@ const App: React.FC = () => {
                 ))}
             </div>
             <Burger ingredients={ingredients} />
+
+            <div style={{marginTop: '20px'}}>
+                <h2>Общая стоимость: {totalPrice} сом</h2>
+            </div>
         </div>
     );
 };
